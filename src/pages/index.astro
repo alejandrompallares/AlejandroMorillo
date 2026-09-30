@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import Journey from '../components/Journey.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Ledger from '../components/Ledger.astro';
+import Contact from '../components/Contact.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+<Layout
+  title="Alejandro Morillo — CTO & Full Stack Developer"
+  description="Alejandro Morillo's portfolio: CTO & Full Stack Developer, co-founder of Fuseaix and MaiHOTEL, with critical projects at VASS and Seidor."
+>
+  <SiteHeader />
+  <main>
+    <Hero />
+    <Journey />
+    <Projects />
+    <Skills />
+    <Ledger />
+    <Contact />
+  </main>
+  <SiteFooter />
+</Layout>

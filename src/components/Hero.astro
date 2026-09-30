@@ -1,0 +1,172 @@
+---
+---
+<section class="hero" id="home">
+  <div class="hero__grain-lines" aria-hidden="true"></div>
+  <div class="wrap hero__wrap">
+    <p class="hero__kicker chip">Madrid, Spain</p>
+
+    <h1 class="hero__name">
+      <span class="hero__name-mark">
+        <span class="hero__name-text">ALEJANDRO<br />MORILLO</span>
+        <svg class="hero__circle" viewBox="0 0 620 260" preserveAspectRatio="none" aria-hidden="true">
+          <path class="ink-mark ink-mark--draw" d="M40,150 C25,70 140,18 320,14 C500,10 592,55 588,128 C584,205 460,248 300,250 C140,252 30,222 22,160 C18,132 30,142 40,150" />
+        </svg>
+      </span>
+    </h1>
+
+    <div class="hero__role reveal">
+      <span class="chip chip--role">CTO &amp; Full Stack Developer</span>
+      <span class="sticker hero__badge">4+ years · 2 startups co-founded</span>
+    </div>
+
+    <p class="hero__line hand reveal">
+      Shipped 7 critical projects at VASS. Now building Fuseaix and MaiHOTEL from the ground up.
+    </p>
+
+    <div class="hero__actions reveal">
+      <a class="btn" href="#projects">View projects</a>
+      <a class="btn btn--ghost" href="#contact">Let's talk</a>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#journey" aria-label="Scroll to the journey">
+    <svg viewBox="0 0 90 130" aria-hidden="true">
+      <path class="ink-mark ink-mark--draw" d="M18,6 C10,40 50,55 34,92 M34,92 L18,74 M34,92 L54,80" />
+    </svg>
+    <span class="hand">scroll down</span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: var(--space-6) var(--space-5);
+    overflow: hidden;
+    background-image:
+      linear-gradient(var(--ink) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+    background-size: 42px 42px;
+    background-position: -1px -1px;
+    background-color: var(--paper);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, transparent 0%, var(--paper) 72%);
+  }
+
+  .hero__wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__kicker {
+    background: var(--paper);
+    transform: rotate(-1deg);
+  }
+
+  .hero__name {
+    margin-block: var(--space-3) 0;
+    font-family: var(--face-hand);
+    font-weight: 800;
+    font-size: clamp(3.2rem, 10vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__name-mark {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero__name-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__circle {
+    position: absolute;
+    left: -6%;
+    top: -14%;
+    width: 112%;
+    height: 130%;
+    z-index: 0;
+    color: var(--coral);
+  }
+
+  .hero__circle path {
+    stroke: var(--coral);
+  }
+
+  .hero__role {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+
+  .chip--role {
+    background: var(--blue);
+    color: var(--paper);
+    font-family: var(--face-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-width: var(--border);
+    padding: 0.5em 1.1em;
+    transform: rotate(-0.6deg);
+  }
+
+  .hero__badge {
+    transform: rotate(2.5deg);
+  }
+
+  .hero__line {
+    max-width: 46ch;
+    margin-top: var(--space-3);
+    font-size: 1.35rem;
+    line-height: 1.35;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+
+  .hero__scroll {
+    position: absolute;
+    right: clamp(1.25rem, 5vw, 4rem);
+    bottom: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .hero__scroll svg {
+    width: 34px;
+    height: 50px;
+    color: var(--ink);
+  }
+
+  .hero__scroll .hand {
+    font-size: 0.95rem;
+    transform: rotate(-2deg);
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding-block: var(--space-5) var(--space-4); }
+    .hero__scroll { display: none; }
+    .hero__line { font-size: 1.15rem; }
+  }
+</style>

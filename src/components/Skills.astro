@@ -1,0 +1,71 @@
+---
+const groups = [
+  { label: 'Frontend', items: ['Vue.js', 'React', 'Angular', 'HTML', 'CSS', 'JavaScript'] },
+  { label: 'Backend', items: ['Node.js', 'PHP', 'Java'] },
+  { label: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB'] },
+  { label: 'Infrastructure', items: ['AWS', 'Azure', 'Nginx', 'VPS', 'DNS', 'CI/CD'] },
+  { label: 'Specialized', items: ['P2P', 'IPFS', 'CRDT', 'Distributed systems', 'Ionic', 'React Native'] },
+];
+---
+<section class="skills section" id="toolkit">
+  <div class="wrap">
+    <p class="section-label reveal">THE TOOLKIT</p>
+    <h2 class="skills__title hand reveal">What I build with</h2>
+
+    <div class="skills__board reveal">
+      {groups.map((g, i) => (
+        <div class="skills__group" style={`--rot:${(i % 2 === 0 ? -1 : 1) * (0.4 + (i % 3) * 0.3)}deg`}>
+          <p class="skills__label hand">{g.label}</p>
+          <ul class="skills__chips">
+            {g.items.map((item) => <li class="chip">{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills__title {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    margin-top: var(--space-1);
+  }
+
+  .skills__board {
+    margin-top: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .skills__group {
+    padding-block: var(--space-2);
+    border-top: 2px dashed var(--ink);
+  }
+
+  .skills__group:first-child {
+    border-top: none;
+  }
+
+  .skills__label {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: var(--acid);
+    border: var(--border) solid var(--ink);
+    border-radius: 8px;
+    padding: 0.2em 0.7em;
+    transform: rotate(var(--rot));
+    margin-bottom: var(--space-2);
+  }
+
+  .skills__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .skills__chips .chip {
+    font-size: 0.95rem;
+    padding: 0.5em 1em;
+  }
+</style>

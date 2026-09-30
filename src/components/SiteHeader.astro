@@ -1,0 +1,80 @@
+---
+const links = [
+  { href: '#journey', label: 'Journey' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#toolkit', label: 'Toolkit' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+<header class="site-header">
+  <a class="site-header__mark" href="#home" aria-label="Back to top">AM</a>
+  <nav class="site-header__nav" aria-label="Main navigation">
+    {links.map((l) => (
+      <a href={l.href}>{l.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: var(--space-2);
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--space-3);
+    pointer-events: none;
+  }
+
+  .site-header__mark {
+    pointer-events: auto;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--face-hand);
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border: var(--border) solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    transform: rotate(-6deg);
+  }
+
+  .site-header__nav {
+    pointer-events: auto;
+    display: flex;
+    gap: 0.35rem;
+    background: var(--paper);
+    border: var(--border) solid var(--ink);
+    border-radius: 999px;
+    padding: 0.35rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .site-header__nav a {
+    font-family: var(--face-mono);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-decoration: none;
+    padding: 0.5em 0.9em;
+    border-radius: 999px;
+    transition: background 0.15s ease;
+  }
+
+  .site-header__nav a:hover,
+  .site-header__nav a:focus-visible {
+    background: var(--acid);
+  }
+
+  @media (max-width: 760px) {
+    .site-header__nav { display: none; }
+  }
+</style>

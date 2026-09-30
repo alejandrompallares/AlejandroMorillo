@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import nvidiaMunich from '../images/nvidia-munich.jpg';
+import s4i from '../images/s4i.jpeg';
+import jueces from '../images/jueces.jpg';
+import maihotelTotem from '../images/maihotel-totem.jpg';
+import fuseaixLaunch from '../images/fuseaix-launch.jpg';
+
+const rows = [
+  { range: '2024 — present', role: 'CTO & Co-founder', org: 'Fuseaix & MaiHOTEL', place: 'Madrid, Spain' },
+  { range: '2023 — 2025', role: 'Full Stack Developer', org: 'Seidor', place: 'Madrid, Spain' },
+  { range: '2021 — 2023', role: 'Developer', org: 'VASS', place: 'Madrid, Spain' },
+];
+
+const milestones = [
+  { img: nvidiaMunich, caption: 'Visiting Nvidia, Munich', rot: '-1.5deg' },
+  { img: s4i, caption: 'The Fuseaix booth at S4I', rot: '1deg' },
+  { img: jueces, caption: 'Talking AI data security at the Independent Judges’ Congress', rot: '-0.5deg' },
+  { img: maihotelTotem, caption: 'MaiHOTEL’s AI concierge, live', rot: '1.2deg' },
+  { img: fuseaixLaunch, caption: 'The Fuseaix team', rot: '-1deg' },
+];
+---
+<section class="ledger section" id="experience">
+  <div class="wrap">
+    <p class="section-label reveal">THE LOGBOOK</p>
+    <h2 class="ledger__title hand reveal">Experience &amp; education</h2>
+
+    <div class="ledger__table panel reveal">
+      <div class="ledger__row ledger__row--head">
+        <span>Period</span>
+        <span>Role</span>
+        <span>Organization</span>
+        <span>Location</span>
+      </div>
+      {rows.map((r) => (
+        <div class="ledger__row">
+          <span class="chip ledger__range">{r.range}</span>
+          <span class="ledger__role">{r.role}</span>
+          <span>{r.org}</span>
+          <span class="ledger__place">{r.place}</span>
+        </div>
+      ))}
+      <div class="ledger__row ledger__row--edu">
+        <span class="chip ledger__range">2019 — 2021</span>
+        <span class="ledger__role">Higher Vocational Training in Web Application Development</span>
+        <span>CampusFP · honors</span>
+        <span class="ledger__place">Madrid, Spain</span>
+      </div>
+    </div>
+
+    <div class="ledger__milestones reveal">
+      <p class="ledger__milestones-lead hand">Moments a table can't hold:</p>
+      <ul class="ledger__polaroids">
+        {milestones.map((m) => (
+          <li class="polaroid" style={`--rot:${m.rot}`}>
+            <span class="polaroid__frame">
+              <Image src={m.img} alt={m.caption} width={400} height={300} loading="lazy" />
+            </span>
+            <p class="hand polaroid__caption">{m.caption}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ledger__title {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    margin-top: var(--space-1);
+  }
+
+  .ledger__table {
+    margin-top: var(--space-5);
+    padding: var(--space-2) var(--space-3);
+    overflow-x: auto;
+  }
+
+  .ledger__row {
+    display: grid;
+    grid-template-columns: 9rem 1.3fr 1fr 1fr;
+    gap: var(--space-2);
+    align-items: center;
+    padding-block: var(--space-2);
+    border-bottom: 2px dashed var(--ink);
+    min-width: 640px;
+  }
+
+  .ledger__row:last-child { border-bottom: none; }
+
+  .ledger__row--head {
+    font-family: var(--face-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: var(--border) solid var(--ink);
+  }
+
+  .ledger__role { font-weight: 700; }
+
+  .ledger__place { font-family: var(--face-mono); font-size: 0.9rem; }
+
+  .ledger__row--edu { color: var(--ink); background: rgba(211, 255, 62, 0.35); margin-inline: calc(var(--space-3) * -1); padding-inline: var(--space-3); }
+
+  .ledger__milestones {
+    margin-top: var(--space-5);
+  }
+
+  .ledger__milestones-lead {
+    font-size: 1.2rem;
+  }
+
+  .ledger__polaroids {
+    margin-top: var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .polaroid {
+    width: clamp(140px, 18vw, 200px);
+    background: var(--paper);
+    border: var(--border) solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    padding: 0.7rem 0.7rem 1.1rem;
+    transform: rotate(var(--rot));
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .polaroid:hover {
+    transform: rotate(var(--rot)) translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .polaroid__frame {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #e6ddc8;
+    border: 2px solid var(--ink);
+  }
+
+  .polaroid__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .polaroid__caption {
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+</style>

@@ -1,0 +1,15 @@
+{
+  "name": "Alejandro Morillo — CTO & Full Stack Developer",
+  "short_name": "Alejandro Morillo",
+  "description": "Alejandro Morillo's portfolio: CTO & Full Stack Developer, co-founder of Fuseaix and MaiHOTEL, with critical projects at VASS and Seidor.",
+  "start_url": "/AlejandroMorillo/",
+  "scope": "/AlejandroMorillo/",
+  "display": "browser",
+  "background_color": "#f4efe4",
+  "theme_color": "#f4efe4",
+  "lang": "en",
+  "icons": [
+    { "src": "/AlejandroMorillo/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/AlejandroMorillo/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

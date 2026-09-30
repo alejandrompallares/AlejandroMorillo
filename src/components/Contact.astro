@@ -1,0 +1,116 @@
+---
+---
+<section class="contact section" id="contact">
+  <div class="wrap">
+    <div class="contact__card panel">
+      <p class="section-label">GET IN TOUCH</p>
+      <h2 class="contact__title hand">
+        Let's talk?
+        <svg class="contact__underline" viewBox="0 0 420 30" preserveAspectRatio="none" aria-hidden="true">
+          <path class="ink-mark ink-mark--draw" d="M4,18 Q60,4 120,16 T240,14 T360,18 T416,12" />
+        </svg>
+      </h2>
+      <p class="contact__body">
+        Got a serious technical project in the works — or just want to talk distributed architectures, AI, or startups? Reach out.
+      </p>
+
+      <div class="contact__actions">
+        <a class="btn" href="mailto:alejandrompallares@gmail.com">
+          Email me
+        </a>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/alejandro-morillo-pallares" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="contact__stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 6" />
+          <text x="60" y="56" text-anchor="middle" class="contact__stamp-text">AM</text>
+          <text x="60" y="76" text-anchor="middle" class="contact__stamp-sub">MADRID</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact__card {
+    position: relative;
+    padding: var(--space-5) var(--space-4);
+    background: var(--violet);
+    color: var(--paper);
+    overflow: hidden;
+  }
+
+  .contact__card .section-label {
+    color: var(--paper);
+  }
+
+  .contact__title {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    margin-top: var(--space-2);
+  }
+
+  .contact__underline {
+    position: absolute;
+    left: 0;
+    bottom: -0.35em;
+    width: 100%;
+    height: 0.5em;
+    color: var(--acid);
+  }
+
+  .contact__underline path { stroke: var(--acid); }
+
+  .contact__body {
+    max-width: 52ch;
+    margin-top: var(--space-4);
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+
+  .contact__card .btn--ghost {
+    color: var(--paper);
+    border-color: var(--paper);
+  }
+
+  .contact__stamp {
+    position: absolute;
+    right: clamp(1rem, 6vw, 4rem);
+    bottom: clamp(1rem, 6vw, 3rem);
+    width: 110px;
+    height: 110px;
+    color: var(--paper);
+    opacity: 0.85;
+    transform: rotate(-8deg);
+  }
+
+  .contact__stamp-text {
+    font-family: var(--face-hand);
+    font-weight: 800;
+    font-size: 22px;
+    fill: currentColor;
+  }
+
+  .contact__stamp-sub {
+    font-family: var(--face-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    fill: currentColor;
+  }
+
+  @media (max-width: 640px) {
+    .contact__card { padding: var(--space-4) var(--space-2); }
+    .contact__stamp { display: none; }
+  }
+</style>

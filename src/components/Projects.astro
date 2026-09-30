@@ -1,0 +1,214 @@
+---
+const featured = [
+  {
+    name: 'Fuseaix',
+    role: 'CTO & Co-founder',
+    tag: 'AI startup · Nvidia Inception',
+    desc: '"Amplified Intelligence through human-AI symbiosis." Proprietary AI on a distributed P2P architecture: data and compute live on the network, not in a central server.',
+    stack: ['Proprietary AI', 'P2P', 'IPFS', 'CRDT', 'React', 'Node.js', 'PostgreSQL', 'MongoDB'],
+    link: 'https://fuseaix.com',
+    linkLabel: 'fuseaix.com',
+    color: 'var(--blue)',
+    dark: true,
+    rot: '-1deg',
+  },
+  {
+    name: 'MaiHOTEL',
+    role: 'CTO & Co-founder',
+    tag: '360° ecosystem for hotels',
+    desc: 'A complete platform with web and mobile apps so a hotel can manage its entire cycle — from booking to stay — from a single system.',
+    stack: ['Vue.js', 'React', 'Ionic', 'React Native', 'Node.js', 'VPS'],
+    link: 'https://info.maihotel.es',
+    linkLabel: 'info.maihotel.es',
+    color: 'var(--acid)',
+    dark: false,
+    rot: '0.8deg',
+  },
+];
+
+const agency = [
+  {
+    org: 'VASS',
+    range: '2021 — 2023',
+    note: '7 critical projects for major accounts.',
+    projects: ['Rentik', 'Repsol NET', 'Repsol Favorites', 'Abante', 'Mapfre Brazil', 'Mapfre Global', 'Internal projects'],
+  },
+  {
+    org: 'Seidor',
+    range: '2023 — 2025',
+    note: 'MVPs and frontend work at an international scale.',
+    projects: ['Mapfre MVPs (multiple countries)', 'Total Energies — React frontend'],
+  },
+];
+---
+<section class="projects section" id="projects">
+  <div class="wrap">
+    <p class="section-label reveal">PROJECT FILES</p>
+    <h2 class="projects__title hand reveal">What I've built</h2>
+
+    <div class="projects__grid">
+      {featured.map((p) => (
+        <article class="project-card reveal" style={`--rot:${p.rot}`}>
+          <div class="project-card__inner panel" style={`background:${p.color}; color:${p.dark ? 'var(--paper)' : 'var(--ink)'}`}>
+            <div class="project-card__head">
+              <h3 class="project-card__name">{p.name}</h3>
+              <span class="chip project-card__role">{p.role}</span>
+            </div>
+            <p class="project-card__tag hand">{p.tag}</p>
+            <p class="project-card__desc">{p.desc}</p>
+            <ul class="project-card__stack">
+              {p.stack.map((s) => <li class="chip">{s}</li>)}
+            </ul>
+            <a class="project-card__link" href={p.link} target="_blank" rel="noopener noreferrer">
+              {p.linkLabel}
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="agency reveal">
+      <p class="agency__lead hand">…and before founding, shipping under pressure at consultancies:</p>
+      <div class="agency__grid">
+        {agency.map((a) => (
+          <div class="agency__card panel">
+            <div class="agency__head">
+              <h3>{a.org}</h3>
+              <span class="chip">{a.range}</span>
+            </div>
+            <p class="agency__note">{a.note}</p>
+            <ul class="agency__projects">
+              {a.projects.map((proj) => <li class="chip">{proj}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects__title {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    margin-top: var(--space-1);
+  }
+
+  .projects__grid {
+    margin-top: var(--space-5);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .project-card__inner {
+    height: 100%;
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    transform: rotate(var(--rot));
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-card__inner:hover {
+    transform: rotate(var(--rot)) translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .project-card__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .project-card__name {
+    font-family: var(--face-hand);
+    font-weight: 800;
+    font-size: 2.1rem;
+  }
+
+  .project-card__role {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .project-card__tag {
+    font-size: 1.05rem;
+  }
+
+  .project-card__desc {
+    line-height: 1.5;
+  }
+
+  .project-card__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: var(--space-1);
+  }
+
+  .project-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    align-self: flex-start;
+    font-family: var(--face-mono);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .agency {
+    margin-top: var(--space-5);
+  }
+
+  .agency__lead {
+    font-size: 1.2rem;
+  }
+
+  .agency__grid {
+    margin-top: var(--space-3);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .agency__card {
+    padding: var(--space-3);
+  }
+
+  .agency__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .agency__head h3 {
+    font-family: var(--face-display);
+    font-weight: 900;
+    font-size: 1.4rem;
+  }
+
+  .agency__note {
+    margin-top: 0.4rem;
+  }
+
+  .agency__projects {
+    margin-top: var(--space-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .projects__grid, .agency__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

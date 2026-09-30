@@ -1,0 +1,139 @@
+---
+const steps = [
+  {
+    range: '2019 — 2021',
+    org: 'CampusFP',
+    role: 'Student',
+    note: 'Higher Vocational Training in Web Application Development, with honors.',
+    color: 'var(--paper)',
+  },
+  {
+    range: '2021 — 2023',
+    org: 'VASS',
+    role: 'Developer',
+    note: '7 critical projects: Rentik, Repsol NET, Repsol Favorites, Abante, Mapfre Brazil, Mapfre Global, and internal projects.',
+    color: 'var(--blue)',
+    dark: true,
+  },
+  {
+    range: '2023 — 2025',
+    org: 'Seidor',
+    role: 'Full Stack Developer',
+    note: 'MVPs for Mapfre across multiple countries + React frontend for Total Energies.',
+    color: 'var(--paper)',
+  },
+  {
+    range: '2024 — present',
+    org: 'Fuseaix & MaiHOTEL',
+    role: 'CTO & Co-founder',
+    note: 'Two startups running in parallel: AI with Nvidia Inception (Fuseaix) and a 360° ecosystem for hotels (MaiHOTEL).',
+    color: 'var(--coral)',
+    dark: false,
+  },
+];
+---
+<section class="journey section" id="journey">
+  <div class="wrap">
+    <p class="section-label reveal">THE JOURNEY</p>
+    <h2 class="journey__title hand reveal">The path so far, noted by hand</h2>
+
+    <ol class="journey__list">
+      {steps.map((step, i) => (
+        <li class="journey__item reveal" style={`--rot:${i % 2 === 0 ? '-0.6deg' : '0.7deg'}`}>
+          <div class="journey__node" aria-hidden="true">
+            <span class="journey__dot" style={`background:${step.color}`}></span>
+            {i < steps.length - 1 && (
+              <svg class="journey__arrow" viewBox="0 0 40 90" preserveAspectRatio="none">
+                <path class="ink-mark ink-mark--draw" d="M20,4 C6,26 34,44 20,66 M20,66 L10,54 M20,66 L30,58" />
+              </svg>
+            )}
+          </div>
+          <div class="journey__card panel" style={`background:${step.color}; color:${step.dark ? 'var(--paper)' : 'var(--ink)'}`}>
+            <p class="journey__range chip">{step.range}</p>
+            <h3 class="journey__org">{step.org}</h3>
+            <p class="journey__role hand">{step.role}</p>
+            <p class="journey__note">{step.note}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .journey__title {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    max-width: 20ch;
+    margin-top: var(--space-1);
+  }
+
+  .journey__list {
+    margin-top: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .journey__item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-2);
+    align-items: start;
+  }
+
+  .journey__node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .journey__dot {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: var(--border) solid var(--ink);
+    flex-shrink: 0;
+  }
+
+  .journey__arrow {
+    width: 2.2rem;
+    height: 5.5rem;
+    color: var(--ink);
+    margin-top: 0.25rem;
+  }
+
+  .journey__card {
+    max-width: 46rem;
+    margin-block: 0 var(--space-3);
+    padding: var(--space-3);
+    transform: rotate(var(--rot));
+  }
+
+  .journey__range {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .journey__org {
+    font-family: var(--face-display);
+    font-weight: 900;
+    font-size: 1.7rem;
+    margin-top: var(--space-1);
+  }
+
+  .journey__role {
+    font-size: 1.15rem;
+    margin-top: 0.15rem;
+  }
+
+  .journey__note {
+    margin-top: var(--space-1);
+    max-width: 60ch;
+  }
+
+  @media (max-width: 640px) {
+    .journey__item { grid-template-columns: 2.2rem 1fr; }
+    .journey__card { padding: var(--space-2); }
+  }
+</style>

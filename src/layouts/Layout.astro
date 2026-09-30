@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+import archivoUrl from '../fonts/Archivo-Variable.woff2?url';
+import shantellUrl from '../fonts/ShantellSans-Variable.woff2?url';
+import jbMonoUrl from '../fonts/JetBrainsMono-Variable.woff2?url';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(`${base}/og-image.png`, Astro.site);
+const faviconHref = `${base}/favicon.svg`;
+const siteName = 'Alejandro Morillo';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Alejandro Morillo',
+  alternateName: 'Alejandro Morillo Pallares',
+  jobTitle: 'CTO & Full Stack Developer',
+  description,
+  url: canonicalURL.href,
+  image: ogImageURL.href,
+  email: 'mailto:alejandrompallares@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Madrid',
+    addressCountry: 'ES',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/alejandro-morillo-pallares',
+    'https://fuseaix.com',
+    'https://info.maihotel.es',
+  ],
+  worksFor: [
+    { '@type': 'Organization', name: 'Fuseaix', url: 'https://fuseaix.com' },
+    { '@type': 'Organization', name: 'MaiHOTEL', url: 'https://info.maihotel.es' },
+  ],
+  alumniOf: {
+    '@type': 'EducationalOrganization',
+    name: 'CampusFP',
+  },
+  knowsAbout: [
+    'Distributed systems',
+    'Artificial intelligence',
+    'P2P architecture',
+    'Full stack development',
+    'Cloud infrastructure',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: `${siteName} — Portfolio`,
+  url: canonicalURL.href,
+  description,
+  inLanguage: 'en',
+  author: { '@type': 'Person', name: 'Alejandro Morillo' },
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+    <link rel="icon" href={`${base}/favicon.ico`} sizes="any" />
+    <link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
+    <link rel="manifest" href={`${base}/site.webmanifest`} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Alejandro Morillo" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#f4efe4" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Alejandro Morillo — CTO & Full Stack Developer" />
+    <meta property="profile:first_name" content="Alejandro" />
+    <meta property="profile:last_name" content="Morillo" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Alejandro Morillo — CTO & Full Stack Developer" />
+
+    <!-- Self-hosted fonts: preload so first paint doesn't wait on a font-face lookup -->
+    <link rel="preload" href={archivoUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={shantellUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={jbMonoUrl} as="font" type="font/woff2" crossorigin />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <slot />
+    <script src="../scripts/interactions.js"></script>
+  </body>
+</html>
